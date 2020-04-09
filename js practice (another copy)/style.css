@@ -1,0 +1,9 @@
+html{scroll-behavior: smooth;}
+body{
+    font-family: 'Baloo Chettan 2', cursive;
+   text-transform: capitalize;
+}
+::selection {
+    background-color: #333333;
+    color: #c5c5c5;
+}
