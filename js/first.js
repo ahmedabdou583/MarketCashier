@@ -62,7 +62,7 @@ function clearForm()
 }
 
 
-function searchProducts(term)
+/*function searchProducts(term)
 
 {
 
@@ -79,7 +79,7 @@ function searchProducts(term)
             var part2= productsContainer[i].name.substring(charIndex,termLength);
             var element = `<p>` + part1 + `<span style="color:red">`+term+`</span>` + term + part2`</p>`;
             rowResults+=  element;
-            */
+            
 
             rowResults += `<p>`+productsContainer[i].name+`</p>`;
 
@@ -89,13 +89,31 @@ function searchProducts(term)
             <td>`+productsContainer[i].category+`</td>
             <td>`+productsContainer[i].description+`</td>
             </tr>`
-            */
+            
         }
 
         document.getElementById("rowResults").innerHTML = rowResults ;
     }
+}*/
+function searchProducts(term) {
+    var cont = "";
+    var cont2 = "";
+    var newTxt = '';
+    for (var i = 0; i < productsContainer.length; i++) {
+        if (productsContainer[i].name.includes(term.trim()) == true) {
+            cont += `<tr><td>` + productsContainer[i].name + `</td><td>` + productsContainer[i].price +
+                `</td><td>` + productsContainer[i].category + `</td><td>` + productsContainer[i].description + `</td></tr>`;
+            newTxt = productsContainer[i].name.replace(term, `<span style="color:red">` + term + `</span>`);
+            cont2 += `<p class="m-0 border px-1">`+ newTxt +`</p>`;
+        }
+    }
+    if(term == "")
+    {
+        cont2 = `<p></p>`;
+    }
+    document.getElementById("tableBody").innerHTML = cont;
+    document.getElementById("rowResults").innerHTML = cont2;
 }
-
 
 function deleteProduct(index)
 {
